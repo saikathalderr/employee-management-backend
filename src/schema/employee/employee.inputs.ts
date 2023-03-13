@@ -63,12 +63,36 @@ export class CreateEmployeeInput {
   profilePicture: string;
 
   @IsOptional()
-  @Field((_type) => CreateAddressInput, { nullable: true })
-  address?: CreateAddressInput;
+  @Field((_type) => CreateAddressInput)
+  address: CreateAddressInput;
 
   @IsOptional()
   @Field(() => String, { nullable: true })
   supervisorId?: string;
+}
+
+@InputType()
+export class UpdateAddressInput {
+  @Length(5, 20)
+  @Field(() => String, { nullable: true })
+  line1?: string;
+
+  @IsOptional()
+  @Length(5, 20)
+  @Field(() => String, { nullable: true })
+  line2?: string;
+
+  @Length(2, 20)
+  @Field(() => String, { nullable: true })
+  city?: string;
+
+  @Length(2, 20)
+  @Field(() => String, { nullable: true })
+  zip?: string;
+
+  @Length(2, 20)
+  @Field(() => String, { nullable: true })
+  country?: string;
 }
 
 @InputType()
@@ -101,8 +125,8 @@ export class UpdateEmployeeInput {
   @Field(() => String, { nullable: true })
   profilePicture?: string;
 
-  @Field((_type) => CreateAddressInput, { nullable: true })
-  address?: CreateAddressInput;
+  @Field((_type) => UpdateAddressInput, { nullable: true })
+  address?: UpdateAddressInput;
 
   @Field(() => String, { nullable: true })
   supervisorId?: string;

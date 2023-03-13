@@ -5,8 +5,8 @@ export class Address {
   @Field(() => String)
   line1: string;
 
-  @Field(() => String)
-  line2: string;
+  @Field(() => String, { nullable: true })
+  line2?: string;
 
   @Field(() => String)
   city: string;
@@ -44,8 +44,8 @@ export class Employee {
   @Field(() => String)
   profilePicture: string;
 
-  @Field((_type) => Address, { nullable: true })
-  address?: Address;
+  @Field((_type) => Address)
+  address: Address;
 
   @Field((_type) => Employee, { nullable: true })
   supervisor?: Employee;

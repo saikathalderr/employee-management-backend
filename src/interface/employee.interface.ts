@@ -13,7 +13,7 @@ export interface IEmployee {
   lastName: string;
   email: string;
   phoneNumber: string;
-  address?: IAddress;
+  address: IAddress;
   birthDate: string;
   profilePicture: string;
   supervisor?: IEmployee;

@@ -67,7 +67,7 @@ export const _updateEmployeeByIdQuery = ({
     throwError(NO_EMPLOYEE_FOUND_TO_UPDATE_ERROR + id);
 
   let updateEmployee: IEmployee = employees[findIdx];
-  employees[findIdx] = { ...updateEmployee, ...input, id };
+  employees[findIdx] = <IEmployee>{ ...updateEmployee, ...input, id };
 
   return employees[findIdx];
 };
