@@ -13,6 +13,20 @@ import {
 } from '../schema/employee/employee.inputs';
 import { employees as db, employees } from './store';
 
+export const _getEmployeeByEmailQuery = (
+  email: string
+): IEmployee | undefined => {
+  return db.find((employee: IEmployee) => employee.email === email);
+};
+
+export const _getEmployeeByPhoneNumberQuery = (
+  phoneNumber: string
+): IEmployee | undefined => {
+  return db.find(
+    (employee: IEmployee) => employee.phoneNumber === phoneNumber
+  );
+};
+
 export const _getEmployeeByIdQuery = (
   id: string
 ): IEmployee | undefined => {

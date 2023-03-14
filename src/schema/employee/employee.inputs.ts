@@ -7,6 +7,9 @@ import {
 } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
+import { IsEmailAlreadyExists } from './isEmailAlreadyExist';
+import { IsPhoneNumberAlreadyExists } from './isPhoneNumberAlreadyExist';
+
 @InputType()
 export class CreateAddressInput {
   @Length(5, 20)
@@ -48,10 +51,14 @@ export class CreateEmployeeInput {
 
   @IsEmail()
   @Field(() => String)
+  @IsEmailAlreadyExists({ message: 'Email already in use!' })
   email: string;
 
   @Length(4, 20)
   @Field(() => String)
+  @IsPhoneNumberAlreadyExists({
+    message: 'Phone number already in use!',
+  })
   phoneNumber: string;
 
   @IsDateString()
@@ -108,14 +115,6 @@ export class UpdateEmployeeInput {
   @Length(2, 20)
   @Field(() => String, { nullable: true })
   lastName?: string;
-
-  @IsEmail()
-  @Field(() => String, { nullable: true })
-  email?: string;
-
-  @Length(4, 20)
-  @Field(() => String, { nullable: true })
-  phoneNumber?: string;
 
   @IsDateString()
   @Field(() => String, { nullable: true })

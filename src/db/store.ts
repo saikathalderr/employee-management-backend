@@ -11,12 +11,12 @@ export const employees: IEmployee[] = [
     birthDate: '2000-02-26T16:23:10.455Z',
     profilePicture: 'https://i.pravatar.cc/150?img=3',
     address: {
-      line1: "Garia, Panchopata, Deshbandhunagar",
-      line2: "Block - D",
-      city: "Kolkata",
-      zip: "700152",
-      country: "India"
-    }
+      line1: 'Garia, Panchopata, Deshbandhunagar',
+      line2: 'Block - D',
+      city: 'Kolkata',
+      zip: '700152',
+      country: 'India',
+    },
   },
   {
     id: '2',
@@ -28,11 +28,11 @@ export const employees: IEmployee[] = [
     birthDate: '2022-03-11T16:23:10.455Z',
     profilePicture: 'https://www.google.com',
     address: {
-      line1: "Garia, Panchopata, Deshbandhunagar",
-      line2: "Dashpara",
-      city: "Kolkata",
-      zip: "700152",
-      country: "India"
-    }
+      line1: 'Garia, Panchopata, Deshbandhunagar',
+      line2: 'Dashpara',
+      city: 'Kolkata',
+      zip: '700152',
+      country: 'India',
+    },
   },
 ];
