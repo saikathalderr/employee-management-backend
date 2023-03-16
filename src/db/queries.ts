@@ -41,7 +41,7 @@ export const _createEmployeeQuery = ({
   employee,
 }: {
   employee: CreateEmployeeInput;
-}): CreateEmployeeInput => {
+}): IEmployee => {
   const { supervisorId } = employee;
   let newEmployee: IEmployee = { ...employee, id: uuidv4() };
   if (supervisorId) {
@@ -49,16 +49,14 @@ export const _createEmployeeQuery = ({
     delete employee.supervisorId;
   }
   db.push(newEmployee);
-  return employee;
+  return newEmployee;
 };
 
 export const _getAllEmployeesQuery = (): IEmployee[] => {
   return employees;
 };
 
-export const _deleteEmployeeByIdQuery = (
-  id: string
-): IEmployee | undefined => {
+export const _deleteEmployeeByIdQuery = (id: string): IEmployee => {
   const findIdx: number = employees.findIndex((e) => e.id === id);
   if (findIdx === -1)
     throwError(NO_EMPLOYEE_FOUND_TO_DELETE_ERROR + id);
@@ -71,17 +69,28 @@ export const _deleteEmployeeByIdQuery = (
 
 export const _updateEmployeeByIdQuery = ({
   id,
-  input,
+  employee,
 }: {
   id: string;
-  input: UpdateEmployeeInput;
-}): IEmployee | undefined => {
+  employee: UpdateEmployeeInput;
+}): IEmployee => {
   const findIdx: number = employees.findIndex((e) => e.id === id);
   if (findIdx === -1)
     throwError(NO_EMPLOYEE_FOUND_TO_UPDATE_ERROR + id);
 
+  const { supervisorId } = employee;
+
   let updateEmployee: IEmployee = employees[findIdx];
-  employees[findIdx] = <IEmployee>{ ...updateEmployee, ...input, id };
+
+  updateEmployee.supervisor = supervisorId
+    ? _getEmployeeByIdQuery(supervisorId)
+    : undefined;
+
+  employees[findIdx] = <IEmployee>{
+    ...updateEmployee,
+    ...employee,
+    id,
+  };
 
   return employees[findIdx];
 };

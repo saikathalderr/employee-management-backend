@@ -5,24 +5,29 @@ import {
   _getEmployeeByIdQuery,
   _updateEmployeeByIdQuery,
 } from '../db/queries';
+import { IEmployee } from '../interface/employee.interface';
 import {
   CreateEmployeeInput,
   UpdateEmployeeInput,
 } from '../schema/employee/employee.inputs';
 
 class EmployeeService {
-  async createEmployee(input: CreateEmployeeInput) {
+  async createEmployee(
+    input: CreateEmployeeInput
+  ): Promise<IEmployee> {
     return _createEmployeeQuery({ employee: input });
   }
-  async fetchEmployeeById(id: string) {
+  async fetchEmployeeById(
+    id: string
+  ): Promise<IEmployee | undefined> {
     return _getEmployeeByIdQuery(id);
   }
 
-  async fetchAllEmployees() {
+  async fetchAllEmployees(): Promise<IEmployee[]> {
     return _getAllEmployeesQuery();
   }
 
-  async deleteEmployeeById(id: string) {
+  async deleteEmployeeById(id: string): Promise<IEmployee> {
     return _deleteEmployeeByIdQuery(id);
   }
 
@@ -32,8 +37,8 @@ class EmployeeService {
   }: {
     id: string;
     input: UpdateEmployeeInput;
-  }) {
-    return _updateEmployeeByIdQuery({ id, input });
+  }): Promise<IEmployee> {
+    return _updateEmployeeByIdQuery({ id, employee: input });
   }
 }
 

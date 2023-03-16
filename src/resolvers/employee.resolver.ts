@@ -1,5 +1,6 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 
+import { IEmployee } from '../interface/employee.interface';
 import {
   CreateEmployeeInput,
   UpdateEmployeeInput,
@@ -14,22 +15,24 @@ export default class EmployeeResolver {
   }
 
   @Query(() => Employee)
-  getEmployee(@Arg('id') id: string) {
+  getEmployee(@Arg('id') id: string): Promise<IEmployee | undefined> {
     return this.employeeService.fetchEmployeeById(id);
   }
 
   @Query(() => [Employee])
-  getAllEmployees() {
+  getAllEmployees(): Promise<IEmployee[]> {
     return this.employeeService.fetchAllEmployees();
   }
 
   @Mutation(() => Employee)
-  createEmployee(@Arg('input') input: CreateEmployeeInput) {
+  createEmployee(
+    @Arg('input') input: CreateEmployeeInput
+  ): Promise<IEmployee> {
     return this.employeeService.createEmployee(input);
   }
 
   @Mutation(() => Employee)
-  deleteEmployee(@Arg('id') id: string) {
+  deleteEmployee(@Arg('id') id: string): Promise<IEmployee> {
     return this.employeeService.deleteEmployeeById(id);
   }
 
@@ -37,7 +40,7 @@ export default class EmployeeResolver {
   updateEmployee(
     @Arg('id') id: string,
     @Arg('input') input: UpdateEmployeeInput
-  ) {
+  ): Promise<IEmployee> {
     return this.employeeService.updateEmployeeById({ id, input });
   }
 }

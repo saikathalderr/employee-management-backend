@@ -104,15 +104,12 @@ export class UpdateAddressInput {
 
 @InputType()
 export class UpdateEmployeeInput {
-  @Length(2, 20)
   @Field(() => String, { nullable: true })
   firstName?: string;
 
-  @Length(2, 20)
   @Field(() => String, { nullable: true })
   middleName?: string;
 
-  @Length(2, 20)
   @Field(() => String, { nullable: true })
   lastName?: string;
 
