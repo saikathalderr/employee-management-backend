@@ -9,7 +9,7 @@ export const employees: IEmployee[] = [
     email: 'saikathalderr@icloud.com',
     phoneNumber: '9088750204',
     birthDate: '2000-02-26T16:23:10.455Z',
-    profilePicture: 'https://i.pravatar.cc/150?img=3',
+    profilePicture: 'https://avatars.githubusercontent.com/u/29329128?v=4',
     address: {
       line1: 'Garia, Panchopata, Deshbandhunagar',
       line2: 'Block - D',
@@ -17,22 +17,5 @@ export const employees: IEmployee[] = [
       zip: '700152',
       country: 'India',
     },
-  },
-  {
-    id: '2',
-    firstName: 'Riya',
-    middleName: '',
-    lastName: 'Roy',
-    email: 'riyaroy@icloud.com',
-    phoneNumber: '9088950204',
-    birthDate: '2022-03-11T16:23:10.455Z',
-    profilePicture: 'https://www.google.com',
-    address: {
-      line1: 'Garia, Panchopata, Deshbandhunagar',
-      line2: 'Dashpara',
-      city: 'Kolkata',
-      zip: '700152',
-      country: 'India',
-    },
-  },
+  }
 ];
